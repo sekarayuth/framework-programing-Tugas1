@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaduan</title>
+</head>
+<body>
+    <h1>pengaduan Warga</h1>
+    <ul>
+    {% for aduan in pengaduan_list %}
+        <li>
+            <strong>{{ aduan.judul }}</strong> <br>
+            <small>
+                Pelapor: {{ aduan.pelapor.nama_lengkap }} <br>
+                Status: {{ aduan.get_status_display }} <br>
+                Tanggal Lapor: {{ aduan.tanggal_lapor|date:"d M Y H:i" }}
+            </small>
+            <p>Deskripsi: {{ aduan.deskripsi }}</p>
+        </li>
+    {% empty %}
+        <li>Belum ada pengaduan yang tercatat.</li>
+    {% endfor %}
+</ul>
+</body>
+</html>
