@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail Warga</title>
+  <style>
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .container {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      padding: 30px 40px;
+      max-width: 600px;
+      width: 90%;
+      animation: slideUp 0.7s ease-out;
+      transition: transform 0.3s ease;
+    }
+
+    .container:hover {
+      transform: translateY(-5px);
+    }
+
+    h1 {
+      text-align: center;
+      color: #1a237e;
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      border-bottom: 3px solid #1976d2;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .info {
+      margin-top: 15px;
+    }
+
+    .info p {
+      background: #f1f5ff;
+      margin: 10px 0;
+      padding: 12px 15px;
+      border-radius: 8px;
+      box-shadow: inset 0 0 3px rgba(25, 118, 210, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .info p:hover {
+      background: #e3f2fd;
+      transform: scale(1.02);
+    }
+
+    strong {
+      color: #0d47a1;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 25px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    a.button {
+      flex: 1;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      padding: 12px 0;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    a.button:hover {
+      transform: translateY(-2px);
+    }
+
+    a.edit {
+      background: #1e88e5;
+    }
+    a.edit:hover {
+      background: #1565c0;
+    }
+
+    a.danger {
+      background: #e53935;
+    }
+    a.danger:hover {
+      background: #b71c1c;
+    }
+
+    a.back {
+      background: #757575;
+    }
+    a.back:hover {
+      background: #424242;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 20px; }
+      .btn-group { flex-direction: column; }
+      a.button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Detail Warga</h1>
+    <div class="info">
+      <p><strong>Nama:</strong> {{ object.nama_lengkap }}</p>
+      <p><strong>NIK:</strong> {{ object.nik }}</p>
+      <p><strong>Alamat:</strong> {{ object.alamat }}</p>
+      <p><strong>No. Telepon:</strong> {{ object.no_telepon }}</p>
+      <p><strong>Tanggal Lahir:</strong> {{ object.tanggal_lahir }}</p>
+      <p><strong>Jenis Kelamin:</strong> {{ object.jenis_kelamin }}</p>
+    </div>
+
+    <div class="btn-group">
+      <a href="{% url 'warga-edit' object.pk %}" class="button edit">✏️ Edit</a>
+      <a href="{% url 'warga-hapus' object.pk %}" class="button danger">🗑️ Hapus</a>
+      <a href="{% url 'warga-list' %}" class="button back">⬅️ Kembali</a>
+    </div>
+  </div>
+</body>
+</html>
